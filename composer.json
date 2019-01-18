@@ -1,0 +1,23 @@
+{
+  "name": "vcn/symfony-autofactory",
+  "description": "Library that makes it possible to automatically register factory classes in the Symfony Service Container",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gerrit Drost",
+      "email": "gdrost@vcn.nl"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Vcn\\Symfony\\AutoFactory\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.1",
+    "ext-mbstring": "*",
+    "symfony/dependency-injection": "^4.2",
+    "doctrine/annotations": "^1.6"
+  }
+}
