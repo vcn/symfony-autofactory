@@ -73,7 +73,7 @@ class AutoFactoryParser
 
             $serviceClass = $returnType->getName();
 
-            if (!class_exists($serviceClass, true)) {
+            if (!class_exists($serviceClass, true) && !interface_exists($serviceClass, true)) {
                 throw new AutoFactoryException("The return type of {$factoryName} is not a valid class");
             }
 
