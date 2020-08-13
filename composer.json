@@ -17,7 +17,7 @@
   "require": {
     "php": ">=7.1",
     "ext-mbstring": "*",
-    "symfony/dependency-injection": "^4.2",
+    "symfony/dependency-injection": "^5.1",
     "doctrine/annotations": "^1.6"
   }
 }
