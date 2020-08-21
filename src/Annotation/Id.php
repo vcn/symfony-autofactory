@@ -13,10 +13,7 @@ class Id
 {
     private const USAGE_HINT = '@Id("service.id")';
 
-    /**
-     * @var string
-     */
-    private $id;
+    private string $id;
 
     /**
      * @param string[] $values
@@ -25,16 +22,15 @@ class Id
      */
     public function __construct(array $values)
     {
-        $this->id = $values['value'] ?? null;
+        $id = $values['value'] ?? null;
 
-        if (count($values) > 1 || $this->id === null || !is_string($this->id)) {
+        if (count($values) > 1 || $id === null || !is_string($id)) {
             throw new AnnotationException('Annotation expects exactly one unnamed string value. Annotation usage hint: ' . self::USAGE_HINT);
         }
+
+        $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;

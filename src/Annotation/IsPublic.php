@@ -13,10 +13,7 @@ class IsPublic
 {
     private const USAGE_HINT = '@IsPublic(true|false)';
 
-    /**
-     * @var bool
-     */
-    private $value;
+    private bool $value;
 
     /**
      * @param array $values
@@ -25,16 +22,15 @@ class IsPublic
      */
     public function __construct(array $values)
     {
-        $this->value = $values['value'] ?? null;
+        $value = $values['value'] ?? null;
 
-        if (count($values) > 1 || $this->value === null || !is_bool($this->value)) {
+        if (count($values) > 1 || $value === null || !is_bool($value)) {
             throw new AnnotationException('Annotation expects exactly one unnamed bool value. Annotation usage hint: ' . self::USAGE_HINT);
         }
+
+        $this->value = $value;
     }
 
-    /**
-     * @return bool
-     */
     public function getValue(): bool
     {
         return $this->value;

@@ -13,15 +13,8 @@ class Alias
 {
     private const USAGE_HINT = '@Alias(id="some.service.id",public=true|false)';
 
-    /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @var null|bool
-     */
-    private $public;
+    private string $id;
+    private ?bool $public;
 
     /**
      * @param string[] $values
@@ -38,17 +31,11 @@ class Alias
         }
     }
 
-    /**
-     * @return string[]
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return bool
-     */
     public function isPublic(): bool
     {
         return $this->public;

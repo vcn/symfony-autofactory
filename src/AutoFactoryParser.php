@@ -9,6 +9,7 @@ use Exception;
 use ReflectionClass;
 use ReflectionMethod;
 use RuntimeException;
+use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\Reference;
 
 class AutoFactoryParser
@@ -131,7 +132,11 @@ class AutoFactoryParser
 
             $bindings = [];
             foreach ($bindAnnotations as $bindAnnotation) {
-                $bindings[$bindAnnotation->getArg()] = new Reference($bindAnnotation->getId());
+                if ($bindAnnotation->hasId()) {
+                    $bindings[$bindAnnotation->getArg()] = new Reference($bindAnnotation->getId());
+                } else {
+                    $bindings[$bindAnnotation->getArg()] = new Parameter($bindAnnotation->getParam());
+                }
             }
 
             $aliases = [];

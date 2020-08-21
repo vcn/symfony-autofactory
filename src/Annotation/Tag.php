@@ -13,15 +13,8 @@ class Tag
 {
     private const USAGE_HINT = '@Tag("some.tag"[, attribute="foobar"[, anotherAttribute="barbaz"[,...]])';
 
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string[]
-     */
-    private $attributes;
+    private string $name;
+    private array  $attributes;
 
     /**
      * @param string[] $values
@@ -30,19 +23,18 @@ class Tag
      */
     public function __construct(array $values)
     {
-        $this->name = $values['value'] ?? null;
+        $name = $values['value'] ?? null;
 
-        if ($this->name === null) {
+        if ($name === null) {
             throw new AnnotationException('Annotation requires name-parameter. Annotation usage hint: ' . self::USAGE_HINT);
         }
+
+        $this->name = $name;
 
         unset($values['value']);
         $this->attributes = $values;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

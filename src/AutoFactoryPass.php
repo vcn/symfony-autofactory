@@ -8,19 +8,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class AutoFactoryPass implements CompilerPassInterface
 {
-    /**
-     * @var AutoFactoryParser
-     */
-    private $annotationParser;
+    private AutoFactoryParser $annotationParser;
+    private string            $tag;
 
-    /**
-     * @var string
-     */
-    private $tag;
-
-    /**
-     * @param string $tag
-     */
     public function __construct(string $tag)
     {
         $this->tag              = $tag;
